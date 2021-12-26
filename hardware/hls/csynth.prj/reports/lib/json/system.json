@@ -1,0 +1,116 @@
+{
+  "nodes":
+  [
+    {
+      "name":"mymult"
+      , "id":487209576
+      , "type":"component"
+      , "children":
+      [
+        {
+          "name":"Stream Read"
+          , "id":486230240
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Basic Block":"mymult.B1.start"
+              , "Width":"64 bits"
+              , "Depth":"0"
+              , "Stall-free":"No"
+              , "Latency":"0"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+                , "line":4
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+        , {
+          "name":"Non-Blocking Stream Write"
+          , "id":487733248
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Basic Block":"mymult.B1.start"
+              , "Width":"32 bits"
+              , "Depth":"0"
+              , "Stall-free":"No"
+              , "Latency":"0"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+                , "line":6
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+      ]
+    }
+    , {
+      "name":"call.mymult"
+      , "id":487208992
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Width":"64 bits"
+          , "Depth":"0"
+          , "Ready Latency":"0"
+          , "Bits per Symbol":"64 bits"
+          , "Uses Packets":"No"
+          , "Uses Valid":"Yes"
+          , "Uses Empty":"No"
+          , "First symbol in high order bits":"No"
+        }
+      ]
+      , "type":"stream"
+    }
+    , {
+      "name":"return.mymult"
+      , "id":487209344
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Width":"32 bits"
+          , "Depth":"0"
+          , "Ready Latency":"0"
+          , "Bits per Symbol":"32 bits"
+          , "Uses Packets":"No"
+          , "Uses Ready":"No"
+          , "Uses Empty":"No"
+          , "First symbol in high order bits":"No"
+        }
+      ]
+      , "type":"stream"
+    }
+  ]
+  , "links":
+  [
+    {
+      "from":487208992
+      , "to":486230240
+    }
+    , {
+      "from":487733248
+      , "to":487209344
+    }
+    , {
+      "from":486230240
+      , "to":487733248
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"compileInfo":{"nodes":[{"command":"i++ -v --simulator none --quartus-compile -march=5CSEBA6U23I7 top.cpp -o csynth","family":"CycloneV, 5CSEBA6U23I7","id":1,"name":"./csynth","product":"HLS","quartus":"21.1.0 Build 842 Lite","time":"Mon Dec 27 01:52:58 2021","version":"21.1.0 Build 173.3"}]}}

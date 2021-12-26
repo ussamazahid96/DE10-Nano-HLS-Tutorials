@@ -1,0 +1,234 @@
+{
+  "487209576":
+  {
+    "nodes":
+    [
+      {
+        "name":"mymult.B0.runOnce"
+        , "id":487709808
+        , "start":"0"
+        , "end":"2"
+        , "details":
+        [
+          {
+            "type":"table"
+          }
+        ]
+        , "type":"bb"
+        , "children":
+        [
+          {
+            "name":"?"
+            , "id":490514496
+            , "start":"1"
+            , "end":"2"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Unknown variable"
+                , "Start Cycle":"1"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+                  , "line":4
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+        ]
+      }
+      , {
+        "name":"mymult.B1.start"
+        , "id":487709952
+        , "start":"2"
+        , "end":"8"
+        , "details":
+        [
+          {
+            "type":"table"
+          }
+        ]
+        , "type":"bb"
+        , "children":
+        [
+          {
+            "name":"Cluster 0"
+            , "id":489306880
+            , "start":"3"
+            , "end":"3"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Cluster Name":"i_sfc_s_c0_in_wt_entry_mymults_c0_enter1_mymult0"
+                , "Cluster Type":"Stall-Enable"
+                , "Cluster Start Cycle":"1"
+                , "Cluster Latency":"0"
+              }
+            ]
+            , "type":"cluster"
+            , "children":
+            [
+              {
+                "name":"Exit"
+                , "id":493870640
+                , "start":"3"
+                , "end":"3"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Start Cycle":"1"
+                    , "Latency":"0"
+                  }
+                ]
+                , "type":"inst"
+              }
+            ]
+          }
+          , {
+            "name":"RD"
+            , "id":489744496
+            , "start":"3"
+            , "end":"3"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Stream Read"
+                , "Width":"64 bits"
+                , "Depth":"0"
+                , "Stream Name":"call.mymult"
+                , "Stall-free":"No"
+                , "Start Cycle":"1"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+                  , "line":4
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Cluster 1"
+            , "id":489610656
+            , "start":"3"
+            , "end":"8"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Cluster Name":"i_sfc_s_c1_in_wt_entry_mymults_c1_enter_mymult3"
+                , "Cluster Type":"Stall-Enable"
+                , "Cluster Start Cycle":"1"
+                , "Cluster Latency":"5"
+              }
+            ]
+            , "type":"cluster"
+            , "children":
+            [
+              {
+                "name":"*"
+                , "id":493897664
+                , "start":"3"
+                , "end":"8"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Instruction":"32-bit Integer Multiply"
+                    , "Start Cycle":"1"
+                    , "Latency":"5"
+                  }
+                ]
+                , "debug":
+                [
+                  [
+                    {
+                      "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+                      , "line":6
+                    }
+                  ]
+                ]
+                , "type":"inst"
+              }
+              , {
+                "name":"WR"
+                , "id":493898016
+                , "start":"8"
+                , "end":"8"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Instruction":"Non-Blocking Stream Write"
+                    , "Width":"32 bits"
+                    , "Depth":"0"
+                    , "Stream Name":"return.mymult"
+                    , "Stall-free":"No"
+                    , "Start Cycle":"6"
+                    , "Latency":"0"
+                  }
+                ]
+                , "debug":
+                [
+                  [
+                    {
+                      "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+                      , "line":6
+                    }
+                  ]
+                ]
+                , "type":"inst"
+              }
+              , {
+                "name":"Exit"
+                , "id":493888832
+                , "start":"8"
+                , "end":"8"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Start Cycle":"6"
+                    , "Latency":"0"
+                  }
+                ]
+                , "type":"inst"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    , "links":
+    [
+      {
+        "from":493897664
+        , "to":493898016
+      }
+      , {
+        "from":489744496
+        , "to":489610656
+      }
+      , {
+        "from":487709808
+        , "to":487709952
+      }
+    ]
+  }
+}

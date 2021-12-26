@@ -1,0 +1,71 @@
+{
+  "functionNameMapping":
+  {
+    "name":"Synthesized Function Name Mapping"
+    , "columns":
+    ["User-defined Function Name", "Mapped Function Name"]
+    , "children":
+    [
+      {
+        "name":"mymult(int, int)"
+        , "data":
+        ["mymult"]
+        , "debug":
+        [
+          [
+            {
+              "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+              , "line":4
+            }
+          ]
+        ]
+      }
+    ]
+  }
+  , "estimatedResources":
+  {
+    "name":"Estimated Resource Usage"
+    , "columns":
+    ["Function Name", "ALUTs ", "FFs  ", "RAMs ", "DSPs ", "MLABs"]
+    , "children":
+    [
+      {
+        "name":"mymult"
+        , "data":
+        [83, 179, 0, 2, 0]
+        , "debug":
+        [
+          [
+            {
+              "filename":"/home/uzahid/workspace/DE10-Nano/hardware/hls/top.cpp"
+              , "line":4
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Total"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [83, 179, 0, 2, 0]
+        , "data_percent":
+        [0.0757493, 0.0816815, 0, 1.78571]
+      }
+      , {
+        "name":"Available"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [109572, 219144, 514, 112, 0]
+      }
+    ]
+  }
+  , "compileWarnings":
+  {
+    "name":"Compile Warnings"
+    , "children":
+    [
+    ]
+  }
+}
