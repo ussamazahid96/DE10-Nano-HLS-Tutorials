@@ -14,7 +14,6 @@ rbf:
 	quartus_stp DE10_NANO
 	quartus_sh --flow compile DE10_NANO.qpf
 	quartus_cpf -c -o bitstream_compression=on DE10_NANO.sof DE10_NANO.rbf
-	# export QUARTUS_ROOTDIR = $(which quartus)/../../
 	sopc-create-header-files "./soc_system.sopcinfo" --single hps_0.h --module hps_0_arm_a9_0 
 	@$(ECHO) "Quartus flow complete"
 

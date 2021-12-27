@@ -30,17 +30,17 @@ int main()
         close(fd);
         exit(EXIT_FAILURE);
     }
+	
+	uint32_t * mymult_a = (mymult_map + MYMULT_CSR_ARG_A_REG);
+	uint32_t * mymult_b = (mymult_map + MYMULT_CSR_ARG_B_REG);
+	uint32_t * mymult_c = (mymult_map + MYMULT_CSR_RETURNDATA_REG);
+	uint32_t * mymult_start = (mymult_map + MYMULT_CSR_START_REG);
 
-	uint32_t * mymult_a = 0;
-	mymult_a = (uint32_t*)(mymult_map + MYMULT_CSR_ARG_A_REG);
-	uint32_t * mymult_b = 0;
-	mymult_b = (uint32_t*)(mymult_map + MYMULT_CSR_ARG_B_REG);
-	uint32_t * mymult_c = 0;
-	mymult_c = (uint32_t*)(mymult_map + MYMULT_CSR_RETURNDATA_REG);
-
-
-	uint32_t * mymult_start = 0;
-	mymult_start = (uint32_t*)(mymult_map + MYMULT_CSR_START_REG);
+	// printf("%s\n", "Printing Pointers");
+	// printf("%p\n", mymult_map);
+	// printf("%p\n", mymult_a);
+	// printf("%p\n", mymult_b);
+	// printf("%p\n", mymult_c);
 
 	// uint32_t * mymult_busy = 0;
 	// mymult_busy = (uint32_t*)(mymult_map + MYMULT_CSR_BUSY_REG);
@@ -48,8 +48,8 @@ int main()
 
 
 
-	alt_write_dword(mymult_a, -3);
-	alt_write_dword(mymult_b, 7);
+	alt_write_dword(mymult_a, 3);
+	alt_write_dword(mymult_b, 3);
 	alt_setbits_dword(mymult_start, 0x1);
 
 	uint64_t done = alt_read_dword(mymult_map + MYMULT_CSR_INTERRUPT_STATUS_REG);
@@ -57,6 +57,7 @@ int main()
 
 	uint64_t reg_c = alt_read_dword(mymult_c);
 	
+	printf("%s\n", "Printing Data");
 	printf("%s = %d\n",   "A", *mymult_a);
 	printf("%s = %d\n",   "B", *mymult_b);
 	printf("%s = %d\n", "RES",  (int) reg_c);
