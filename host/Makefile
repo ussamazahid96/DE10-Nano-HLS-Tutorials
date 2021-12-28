@@ -32,7 +32,7 @@ build:
 
 host:
 	rm -f host_c*
-# 	$(CC) $(CFLAGS) host.c -o host_c
+	$(CC) $(CFLAGS) host.c -o host_c
 	$(CPP) $(CPPFLAGS) host.cpp -o host_cpp 
 
 clean:
