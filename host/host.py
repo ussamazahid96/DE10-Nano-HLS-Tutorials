@@ -1,22 +1,37 @@
 from devmem import DevMem
-
-a = 0x28
-b = 0x30
-c = 0x20
+import random
 start = 0x8
 status = 0x18
 
-mymult_reader = DevMem(0xff200000, 64)
-mymult_writer = DevMem(0xff200000, 64)
+ELEMENTS = 64
 
-# add support for negative values
-mymult_writer.write(a, [3])
-mymult_writer.write(b, [7])
-mymult_writer.write(start, [1])
-while not (mymult_reader.read(status, 1).data[0] & 0x1):
-	pass
+ACC_TOP_csr = DevMem(0xff200000, 32)
+ACC_TOP_A = DevMem(0xff200200, 256)
+ACC_TOP_B = DevMem(0xff200400, 256)
+ACC_TOP_C = DevMem(0xff200600, 256)
 
-print(mymult_reader.read(a, 1).data[0])
-print(mymult_reader.read(b, 1).data[0])
-print(mymult_reader.read(c, 1).data[0])
+
+ARG_A = []
+ARG_B = []
+for i in range(ELEMENTS):
+    ARG_A.append(random.randint(0,ELEMENTS))
+    ARG_B.append(random.randint(0,ELEMENTS))
+
+ACC_TOP_A.write(0, ARG_A)
+ACC_TOP_B.write(0, ARG_B)
+ACC_TOP_csr.write(start, [1])
+while not (ACC_TOP_csr.read(status, 1).data[0] & 0x1):
+    pass
+
+print("A====")
+print(ACC_TOP_A.read(0, ELEMENTS).data)
+print("B====")
+print(ACC_TOP_B.read(0, ELEMENTS).data)
+res = ACC_TOP_C.read(0, ELEMENTS).data
+print("C====")
+print(res)
+
+for i in range(ELEMENTS):
+    if res[i] != ARG_A[i] + ARG_B[i]:
+        raise Exception("test failed")
 

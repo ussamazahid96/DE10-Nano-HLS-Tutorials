@@ -33,10 +33,11 @@ build:
 host:
 	rm -f host_c*
 	$(CC) $(CFLAGS) host.c -o host_c
-	$(CPP) $(CPPFLAGS) host.cpp -o host_cpp 
+# 	$(CPP) $(CPPFLAGS) host.cpp -o host_cpp 
 
 clean:
-	rm -f program host
+	rm -f program host_c*
+	rm -rf __pycache__
 
 dtb_install:
 	cp DE10_NANO.rbf /lib/firmware/

@@ -37,15 +37,48 @@
 #define HPS_0_AXI_SDRAM_MEMORY_INFO_MEM_INIT_DATA_WIDTH 31
 
 /*
- * Macros for device 'mymult_0_mymult_internal_inst', class 'mymult_internal'
- * The macros are prefixed with 'MYMULT_0_MYMULT_INTERNAL_INST_'.
+ * Macros for device 'TOP_0_ACCL_TOP_internal_inst_avs_cra', class 'ACCL_TOP_internal'
+ * The macros are prefixed with 'TOP_0_ACCL_TOP_INTERNAL_INST_AVS_CRA_'.
  * The prefix is the slave descriptor.
  */
-#define MYMULT_0_MYMULT_INTERNAL_INST_COMPONENT_TYPE mymult_internal
-#define MYMULT_0_MYMULT_INTERNAL_INST_COMPONENT_NAME mymult_0_mymult_internal_inst
-#define MYMULT_0_MYMULT_INTERNAL_INST_BASE 0xff200000
-#define MYMULT_0_MYMULT_INTERNAL_INST_SPAN 64
-#define MYMULT_0_MYMULT_INTERNAL_INST_END 0xff20003f
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_CRA_COMPONENT_TYPE ACCL_TOP_internal
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_CRA_COMPONENT_NAME TOP_0_ACCL_TOP_internal_inst
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_CRA_BASE 0xff200000
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_CRA_SPAN 32
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_CRA_END 0xff20001f
+
+/*
+ * Macros for device 'TOP_0_ACCL_TOP_internal_inst_avs_a', class 'ACCL_TOP_internal'
+ * The macros are prefixed with 'TOP_0_ACCL_TOP_INTERNAL_INST_AVS_A_'.
+ * The prefix is the slave descriptor.
+ */
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_A_COMPONENT_TYPE ACCL_TOP_internal
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_A_COMPONENT_NAME TOP_0_ACCL_TOP_internal_inst
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_A_BASE 0xff200200
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_A_SPAN 256
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_A_END 0xff2002ff
+
+/*
+ * Macros for device 'TOP_0_ACCL_TOP_internal_inst_avs_b', class 'ACCL_TOP_internal'
+ * The macros are prefixed with 'TOP_0_ACCL_TOP_INTERNAL_INST_AVS_B_'.
+ * The prefix is the slave descriptor.
+ */
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_B_COMPONENT_TYPE ACCL_TOP_internal
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_B_COMPONENT_NAME TOP_0_ACCL_TOP_internal_inst
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_B_BASE 0xff200400
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_B_SPAN 256
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_B_END 0xff2004ff
+
+/*
+ * Macros for device 'TOP_0_ACCL_TOP_internal_inst_avs_c', class 'ACCL_TOP_internal'
+ * The macros are prefixed with 'TOP_0_ACCL_TOP_INTERNAL_INST_AVS_C_'.
+ * The prefix is the slave descriptor.
+ */
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_C_COMPONENT_TYPE ACCL_TOP_internal
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_C_COMPONENT_NAME TOP_0_ACCL_TOP_internal_inst
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_C_BASE 0xff200600
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_C_SPAN 256
+#define TOP_0_ACCL_TOP_INTERNAL_INST_AVS_C_END 0xff2006ff
 
 /*
  * Macros for device 'hps_0_gmac0', class 'stmmac'
