@@ -11,7 +11,7 @@
 #include "socal/hps.h"
 
 #include "hps_0.h"
-#include "mymult_csr.h"
+#include "ACCL_TOP_csr.h"
 
 int main()
 {
@@ -21,52 +21,40 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-	void * mymult_map;
-	mymult_map = mmap(NULL, MYMULT_0_MYMULT_INTERNAL_INST_SPAN, 
+	void * ACCL_TOP_csr;
+	ACCL_TOP_csr = mmap(NULL, TOP_0_ACCL_TOP_INTERNAL_INST_SPAN, 
 					   (PROT_READ | PROT_WRITE), MAP_SHARED, 
-					   fd, MYMULT_0_MYMULT_INTERNAL_INST_BASE);
-    if(mymult_map == MAP_FAILED) {
-        perror("mymult_map failed");
+					   fd, TOP_0_ACCL_TOP_INTERNAL_INST_BASE);
+    if(ACCL_TOP_csr == MAP_FAILED) {
+        perror("ACCL_TOP_csr failed");
         close(fd);
         exit(EXIT_FAILURE);
     }
 	
-	uint32_t * mymult_a = (mymult_map + MYMULT_CSR_ARG_A_REG);
-	uint32_t * mymult_b = (mymult_map + MYMULT_CSR_ARG_B_REG);
-	uint32_t * mymult_c = (mymult_map + MYMULT_CSR_RETURNDATA_REG);
-	uint32_t * mymult_start = (mymult_map + MYMULT_CSR_START_REG);
-
-	// printf("%s\n", "Printing Pointers");
-	// printf("%p\n", mymult_map);
-	// printf("%p\n", mymult_a);
-	// printf("%p\n", mymult_b);
-	// printf("%p\n", mymult_c);
-
-	// uint32_t * mymult_busy = 0;
-	// mymult_busy = (uint32_t*)(mymult_map + MYMULT_CSR_BUSY_REG);
-	// printf("%s = 0x%x\n", "BUSY", *mymult_busy);
+	uint32_t * ACCL_TOP_A = (ACCL_TOP_csr + ACCL_TOP_CSR_ARG_A_REG);
+	uint32_t * ACCL_TOP_B = (ACCL_TOP_csr + ACCL_TOP_CSR_ARG_B_REG);
+	uint32_t * ACCL_TOP_C = (ACCL_TOP_csr + ACCL_TOP_CSR_RETURNDATA_REG);
+	uint32_t * ACCL_TOP_START = (ACCL_TOP_csr + ACCL_TOP_CSR_START_REG);
 
 
+	alt_write_dword(ACCL_TOP_A, 6);
+	alt_write_dword(ACCL_TOP_B, 2);
+	alt_setbits_dword(ACCL_TOP_START, 0x1);
 
-	alt_write_dword(mymult_a, 3);
-	alt_write_dword(mymult_b, 3);
-	alt_setbits_dword(mymult_start, 0x1);
+	while(!(alt_read_dword(ACCL_TOP_csr + ACCL_TOP_CSR_INTERRUPT_STATUS_REG) & 0x1));
 
-	uint64_t done = alt_read_dword(mymult_map + MYMULT_CSR_INTERRUPT_STATUS_REG);
-	while(!(done & 0x1));
-
-	uint64_t reg_c = alt_read_dword(mymult_c);
+	uint64_t reg_c = alt_read_dword(ACCL_TOP_C);
 	
 	printf("%s\n", "Printing Data");
-	printf("%s = %d\n",   "A", *mymult_a);
-	printf("%s = %d\n",   "B", *mymult_b);
+	printf("%s = %d\n",   "A", *ACCL_TOP_A);
+	printf("%s = %d\n",   "B", *ACCL_TOP_B);
 	printf("%s = %d\n", "RES",  (int) reg_c);
 
 
     int result = 0;
-    result = munmap(mymult_map, MYMULT_0_MYMULT_INTERNAL_INST_SPAN); 
+    result = munmap(ACCL_TOP_csr, TOP_0_ACCL_TOP_INTERNAL_INST_SPAN); 
     if(result < 0) {
-        perror("mymult_map munmap failed");
+        perror("ACCL_TOP_csr munmap failed");
         close(fd);
         exit(EXIT_FAILURE);
     }	

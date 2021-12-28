@@ -37,15 +37,15 @@
 #define HPS_0_AXI_SDRAM_MEMORY_INFO_MEM_INIT_DATA_WIDTH 31
 
 /*
- * Macros for device 'mymult_0_mymult_internal_inst', class 'mymult_internal'
- * The macros are prefixed with 'MYMULT_0_MYMULT_INTERNAL_INST_'.
+ * Macros for device 'TOP_0_ACCL_TOP_internal_inst', class 'ACCL_TOP_internal'
+ * The macros are prefixed with 'TOP_0_ACCL_TOP_INTERNAL_INST_'.
  * The prefix is the slave descriptor.
  */
-#define MYMULT_0_MYMULT_INTERNAL_INST_COMPONENT_TYPE mymult_internal
-#define MYMULT_0_MYMULT_INTERNAL_INST_COMPONENT_NAME mymult_0_mymult_internal_inst
-#define MYMULT_0_MYMULT_INTERNAL_INST_BASE 0xff200000
-#define MYMULT_0_MYMULT_INTERNAL_INST_SPAN 64
-#define MYMULT_0_MYMULT_INTERNAL_INST_END 0xff20003f
+#define TOP_0_ACCL_TOP_INTERNAL_INST_COMPONENT_TYPE ACCL_TOP_internal
+#define TOP_0_ACCL_TOP_INTERNAL_INST_COMPONENT_NAME TOP_0_ACCL_TOP_internal_inst
+#define TOP_0_ACCL_TOP_INTERNAL_INST_BASE 0xff200000
+#define TOP_0_ACCL_TOP_INTERNAL_INST_SPAN 64
+#define TOP_0_ACCL_TOP_INTERNAL_INST_END 0xff20003f
 
 /*
  * Macros for device 'hps_0_gmac0', class 'stmmac'

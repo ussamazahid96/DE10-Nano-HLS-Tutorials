@@ -1,6 +1,6 @@
 #include "HLS/stdio.h"
 #include "assert.h"
-#include "top.h"
+#include "top.cpp"
 
 #define ELEMENTS 10 
 
@@ -13,7 +13,7 @@ int main() {
 	for (int i=0; i<ELEMENTS; ++i) {
 		a[i]=rand()%10;
 		b[i]=rand()%10;
-		result[i]=mymult(a[i],b[i]);
+		result[i]=ACCL_TOP(a[i],b[i]);
 	}
 
 	for (int i=0; i<ELEMENTS; ++i) {				
