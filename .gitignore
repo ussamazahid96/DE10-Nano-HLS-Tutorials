@@ -1,33 +1,35 @@
 hardware/hls/csim
-hardware/hls/csynth.prj
 hardware/hls/*.tmp
+hardware/hls/csynth.prj
 
 
+hardware/*.h 
 hardware/*.txt 
 hardware/*.rpt 
-hardware/*.smsg 
-hardware/*.summary 
 hardware/*.jdi 
 hardware/*.pin 
 hardware/*.sld 
 hardware/*.csv 
-hardware/*.done 
 hardware/*.sof 
-hardware/*.sopcinfo 
 hardware/*.qws 
-hardware/soc_system.BAK.qsys 
-hardware/*.h 
 hardware/*.rbf
+hardware/*.done 
+hardware/*.smsg 
+hardware/*.summary 
+hardware/*.sopcinfo 
+
 hardware/db 
-hardware/incremental_db 
-hardware/hps_isw_handoff 
+hardware/output
 hardware/.qsys_edit 
 hardware/soc_system
+hardware/incremental_db 
+hardware/hps_isw_handoff 
+hardware/soc_system.BAK.qsys 
 
-host/__pycache__/
 host/host_c
 host/host_cpp
 host/program
+host/__pycache__/
 
 
 
