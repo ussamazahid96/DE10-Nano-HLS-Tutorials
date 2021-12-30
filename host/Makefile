@@ -36,6 +36,7 @@ host:
 
 clean:
 	rm -f program host_c*
+	rm -rf __pycache__
 
 dtb_install:
 	cp DE10_NANO.rbf /lib/firmware/
