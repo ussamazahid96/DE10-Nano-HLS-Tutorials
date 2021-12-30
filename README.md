@@ -6,11 +6,12 @@ Note that this repository is under development, there might be bugs lurking arou
 
 `avalon_slave_memory` branch has example for avalon slave memory arguments with ARM host code working for python.
 
+`MM_master` branch has an example for the avalon memory mapped master interface with ARM host code working for C, C++ and python.
 
 ## Dependencies
 
-1. Quartus Prime Lite
-2. Intel HLS compiler
+1. Quartus Prime Lite version 21.1
+2. Intel HLS compiler version 21.4
 3. FPGA-SoC-Linux for DE10-Nano
 
 ## Setup
@@ -20,8 +21,8 @@ Note that this repository is under development, there might be bugs lurking arou
 
 ## TODO
 
-1. Negative Values in Python Host + improve it
-
+1. Add ModelSim RTL simulation
+2. Improve host codes
 
 ## Acknowledgements
 

@@ -31,6 +31,12 @@
             |         |               done[0:0], |       done is read-only and
             |         |   interrupt_status[0:0]} | interrupt_status is write 1
             |         |                          |                    to clear
+------------|---------|--------------------------|-----------------------------
+       0x20 |     R/W |                {a[63:0]} |                  Argument a
+------------|---------|--------------------------|-----------------------------
+       0x28 |     R/W |                {b[63:0]} |                  Argument b
+------------|---------|--------------------------|-----------------------------
+       0x30 |     R/W |                {c[63:0]} |                  Argument c
 
 NOTE: Writes to reserved bits will be ignored and reads from reserved
       bits will return undefined values.
@@ -46,10 +52,19 @@ NOTE: Writes to reserved bits will be ignored and reads from reserved
 #define ACCL_TOP_CSR_START_REG (0x8)
 #define ACCL_TOP_CSR_INTERRUPT_ENABLE_REG (0x10)
 #define ACCL_TOP_CSR_INTERRUPT_STATUS_REG (0x18)
+#define ACCL_TOP_CSR_ARG_A_REG (0x20)
+#define ACCL_TOP_CSR_ARG_B_REG (0x28)
+#define ACCL_TOP_CSR_ARG_C_REG (0x30)
 
 /* Argument Sizes (bytes) */
+#define ACCL_TOP_CSR_ARG_A_SIZE (8)
+#define ACCL_TOP_CSR_ARG_B_SIZE (8)
+#define ACCL_TOP_CSR_ARG_C_SIZE (8)
 
 /* Argument Masks */
+#define ACCL_TOP_CSR_ARG_A_MASK (0xffffffffffffffffULL)
+#define ACCL_TOP_CSR_ARG_B_MASK (0xffffffffffffffffULL)
+#define ACCL_TOP_CSR_ARG_C_MASK (0xffffffffffffffffULL)
 
 /* Status/Control Masks */
 #define ACCL_TOP_CSR_BUSY_MASK   (1<<0)
