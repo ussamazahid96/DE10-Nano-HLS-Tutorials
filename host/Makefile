@@ -17,7 +17,6 @@ HWLIBS_ROOT = ./intel-socfpga-hwlib/armv7a/hwlib/
 
 ## COMPILER FLAGS
 CFLAGS = -g -std=c99 -Wall -Werror -I$(HWLIBS_ROOT)/include -I$(HWLIBS_ROOT)/include/$(ALT_DEVICE_FAMILY) -D$(ALT_DEVICE_FAMILY)
-LDFLAGS = -g -std=c99 -Wall -Werror -pthread -lpthread
 CPPFLAGS = -I$(HWLIBS_ROOT)/include -I$(HWLIBS_ROOT)/include/$(ALT_DEVICE_FAMILY) -D$(ALT_DEVICE_FAMILY)
 
 CPP = arm-linux-gnueabihf-g++
