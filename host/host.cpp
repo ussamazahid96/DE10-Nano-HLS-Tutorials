@@ -33,17 +33,25 @@ int main()
     uint8_t* ACCL_TOP_C = (ACCL_TOP_csr + ACCL_TOP_CSR_RETURNDATA_REG);
     uint8_t* ACCL_TOP_START = (ACCL_TOP_csr + ACCL_TOP_CSR_START_REG);
 
-    alt_write_dword(ACCL_TOP_A, -3);
-    alt_write_dword(ACCL_TOP_B, 5);
+    alt_write_dword(ACCL_TOP_A, rand()%1000-500);
+    alt_write_dword(ACCL_TOP_B, rand()%1000-500);
     alt_setbits_dword(ACCL_TOP_START, 0x1);
 
     while(!(alt_read_dword(ACCL_TOP_csr + ACCL_TOP_CSR_INTERRUPT_STATUS_REG) & 0x1));
+    
+    int a = (int) alt_read_dword(ACCL_TOP_A);
+    int b = (int) alt_read_dword(ACCL_TOP_B);
+    int c = (int) alt_read_dword(ACCL_TOP_C);
 
     std::cout << "Printing Data" << std::endl;
-    std::cout <<  (int) alt_read_dword(ACCL_TOP_A) << std::endl;
-    std::cout <<  (int) alt_read_dword(ACCL_TOP_B) << std::endl;
-    std::cout <<  (int) alt_read_dword(ACCL_TOP_C) << std::endl;
-    
+    std::cout <<  a << std::endl;
+    std::cout <<  b << std::endl;
+    std::cout <<  c << std::endl;
+    if(c != a*b)
+        std::cerr << "ACCL_TOP_csr munmap failed" << std::endl;
+    else
+        std::cout << "Test Passed" << std::endl;
+
     int result = 0;
     result = munmap(ACCL_TOP_csr, TOP_0_ACCL_TOP_INTERNAL_INST_SPAN); 
     if(result < 0) {

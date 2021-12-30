@@ -1,21 +1,28 @@
 from devmem import DevMem
-
+import random
 a = 0x28
 b = 0x30
 c = 0x20
 start = 0x8
 status = 0x18
 
-mymult_reader = DevMem(0xff200000, 64)
-mymult_writer = DevMem(0xff200000, 64)
+ACCL_TOP_csr = DevMem(0xff200000, 64)
 
-mymult_writer.write(a, [8])
-mymult_writer.write(b, [8])
-mymult_writer.write(start, [1])
-while not (mymult_reader.read(status, 1).data[0] & 0x1):
+elem_a = random.randint(-2**15, 2**15-1)
+elem_b = random.randint(-2**15, 2**15-1)
+
+ACCL_TOP_csr.write(a, [elem_a])
+ACCL_TOP_csr.write(b, [elem_b])
+ACCL_TOP_csr.write(start, [1])
+while not (ACCL_TOP_csr.read(status, 1).data[0] & 0x1):
     pass
 
-print(mymult_reader.read(a, 1).data[0])
-print(mymult_reader.read(b, 1).data[0])
-print(mymult_reader.read(c, 1).data[0])
+print(ACCL_TOP_csr.read(a, 1).data[0])
+print(ACCL_TOP_csr.read(b, 1).data[0])
+print(ACCL_TOP_csr.read(c, 1).data[0])
+
+if ACCL_TOP_csr.read(c, 1).data[0] != elem_a*elem_b:
+    raise Exception("Test failed!!!")
+else:
+    print("Test Passed") 
 

@@ -26,21 +26,21 @@ CPP = arm-linux-gnueabihf-g++
 all: clean build host
 
 build:
-    rm -f program   
-    $(CC) $(CFLAGS) main.c -o program
+	rm -f program   
+	$(CC) $(CFLAGS) main.c -o program
 
 host:
-    rm -f host_c*
-    $(CC) $(CFLAGS) host.c -o host_c
-    $(CPP) $(CPPFLAGS) host.cpp -o host_cpp 
+	rm -f host_c*
+	$(CC) $(CFLAGS) host.c -o host_c
+	$(CPP) $(CPPFLAGS) host.cpp -o host_cpp 
 
 clean:
-    rm -f program host_c*
+	rm -f program host_c*
 
 dtb_install:
-    cp DE10_NANO.rbf /lib/firmware/
-    dtbocfg.rb --install soc_system --dts soc_system.dts
+	cp DE10_NANO.rbf /lib/firmware/
+	dtbocfg.rb --install soc_system --dts soc_system.dts
 
 dtb_uninstall:
-    dtbocfg.rb --remove soc_system
-    rm -f /lib/firmware/DE10_NANO.rbf
+	dtbocfg.rb --remove soc_system
+	rm -f /lib/firmware/DE10_NANO.rbf

@@ -36,20 +36,25 @@ int main()
     uint32_t * ACCL_TOP_C = (ACCL_TOP_csr + ACCL_TOP_CSR_RETURNDATA_REG);
     uint32_t * ACCL_TOP_START = (ACCL_TOP_csr + ACCL_TOP_CSR_START_REG);
 
-
-    alt_write_dword(ACCL_TOP_A, 6);
-    alt_write_dword(ACCL_TOP_B, 2);
+    int a = rand()%1000-500;
+    int b = rand()%1000-500;
+    alt_write_dword(ACCL_TOP_A, a);
+    alt_write_dword(ACCL_TOP_B, b);
     alt_setbits_dword(ACCL_TOP_START, 0x1);
 
     while(!(alt_read_dword(ACCL_TOP_csr + ACCL_TOP_CSR_INTERRUPT_STATUS_REG) & 0x1));
 
-    uint64_t reg_c = alt_read_dword(ACCL_TOP_C);
+    int reg_c = (int) alt_read_dword(ACCL_TOP_C);
     
     printf("%s\n", "Printing Data");
     printf("%s = %d\n",   "A", *ACCL_TOP_A);
     printf("%s = %d\n",   "B", *ACCL_TOP_B);
-    printf("%s = %d\n", "RES",  (int) reg_c);
+    printf("%s = %d\n", "RES",  reg_c);
 
+    if(reg_c != a*b)
+        printf("%s\n", "Test Failed");
+    else
+        printf("%s\n", "Test Passed");
 
     int result = 0;
     result = munmap(ACCL_TOP_csr, TOP_0_ACCL_TOP_INTERNAL_INST_SPAN); 
