@@ -2,11 +2,13 @@
 
 Note that this repository is under development, there might be bugs lurking around.
 
-`main` branch has example for avalon slave register and control and status registers (csr) with ARM host code working for C, C++ and python.
+`main` branch has example for avalon slave register and control and status registers (csr) with ARM host code working for C++ and python.
 
-`avalon_slave_memory` branch has example for avalon slave memory arguments with ARM host code working for C, C++ and python
+`avalon_slave_memory` branch has example for avalon slave memory arguments with ARM host code working for C++ and python
 
-`MM_master` branch has an example for the avalon memory mapped master interface with ARM host code working for C, C++ and python.
+`MM_master` branch has an example for the avalon memory mapped master interface with ARM host code working for C++ and python.
+
+`avalon_stream` branch has an example for the avalon stream interface driven with modular scatter gather dma with ARM host code working for C++ and python.
 
 ## Dependencies
 

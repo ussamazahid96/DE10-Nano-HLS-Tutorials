@@ -1,14 +1,15 @@
 #include "HLS/hls.h"
 
-#define ELEMENTS 64
-
 
 hls_avalon_slave_component component 
-void ACCL_TOP(hls_avalon_slave_memory_argument(ELEMENTS*sizeof(int)) int *a, 
-              hls_avalon_slave_memory_argument(ELEMENTS*sizeof(int)) int *b, 
-              hls_avalon_slave_memory_argument(ELEMENTS*sizeof(int)) int *c) 
+void ACCL_TOP(ihc::stream_in<int, ihc::bitsPerSymbol<8>, ihc::firstSymbolInHighOrderBits<true>>&a, 
+              ihc::stream_out<int, ihc::bitsPerSymbol<8>, ihc::firstSymbolInHighOrderBits<true>>&b,
+              hls_avalon_slave_register_argument int N) 
 {
-    #pragma unroll 8
-    for (int i=0; i<ELEMENTS; ++i)
-        c[i]=a[i]+b[i];
+    int reg_a=0;
+    for (int i=0; i<N; ++i)
+    {
+        reg_a = a.read();
+        b.write(-1*reg_a);
+    }
 }

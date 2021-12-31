@@ -24,29 +24,10 @@
          value = "2";
          type = "int";
       }
-   }
-   element TOP_0.avs_a
-   {
-      datum baseAddress
+      datum sopceditor_expanded
       {
-         value = "512";
-         type = "String";
-      }
-   }
-   element TOP_0.avs_b
-   {
-      datum baseAddress
-      {
-         value = "1024";
-         type = "String";
-      }
-   }
-   element TOP_0.avs_c
-   {
-      datum baseAddress
-      {
-         value = "1536";
-         type = "String";
+         value = "1";
+         type = "boolean";
       }
    }
    element hps_0
@@ -62,6 +43,64 @@
       datum baseAddress
       {
          value = "0";
+         type = "String";
+      }
+   }
+   element msgdma_0
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element msgdma_0.csr
+   {
+      datum baseAddress
+      {
+         value = "64";
+         type = "String";
+      }
+   }
+   element msgdma_0.descriptor_slave
+   {
+      datum baseAddress
+      {
+         value = "96";
+         type = "String";
+      }
+   }
+   element msgdma_1
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element msgdma_1.csr
+   {
+      datum baseAddress
+      {
+         value = "128";
+         type = "String";
+      }
+   }
+   element msgdma_1.descriptor_slave
+   {
+      datum baseAddress
+      {
+         value = "256";
          type = "String";
       }
    }
@@ -782,33 +821,92 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
- <connection
-   kind="avalon"
-   version="21.1"
-   start="hps_0.h2f_lw_axi_master"
-   end="TOP_0.avs_a">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0200" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="21.1"
-   start="hps_0.h2f_lw_axi_master"
-   end="TOP_0.avs_b">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0400" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="21.1"
-   start="hps_0.h2f_lw_axi_master"
-   end="TOP_0.avs_c">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0600" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
+ <module name="msgdma_0" kind="altera_msgdma" version="21.1" enabled="1">
+  <parameter name="AUTO_DESCRIPTOR_READ_MASTER_ADDRESS_MAP" value="" />
+  <parameter
+     name="AUTO_DESCRIPTOR_READ_MASTER_ADDRESS_WIDTH"
+     value="AddressWidth = -1" />
+  <parameter name="AUTO_DESCRIPTOR_WRITE_MASTER_ADDRESS_MAP" value="" />
+  <parameter
+     name="AUTO_DESCRIPTOR_WRITE_MASTER_ADDRESS_WIDTH"
+     value="AddressWidth = -1" />
+  <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_MM_READ_ADDRESS_MAP"><![CDATA[<address-map><slave name='hps_0_axi_sdram.axi_slave0' start='0x0' end='0x80000000' /><slave name='hps_0_gmac0.axi_slave0' start='0xFF700000' end='0xFF702000' /><slave name='hps_0_gmac1.axi_slave0' start='0xFF702000' end='0xFF704000' /><slave name='hps_0_sdmmc.axi_slave0' start='0xFF704000' end='0xFF705000' /><slave name='hps_0_qspi.axi_slave0' start='0xFF705000' end='0xFF705100' /><slave name='hps_0_fpgamgr.axi_slave0' start='0xFF706000' end='0xFF707000' /><slave name='hps_0_gpio0.axi_slave0' start='0xFF708000' end='0xFF708100' /><slave name='hps_0_gpio1.axi_slave0' start='0xFF709000' end='0xFF709100' /><slave name='hps_0_gpio2.axi_slave0' start='0xFF70A000' end='0xFF70A100' /><slave name='hps_0_l3regs.axi_slave0' start='0xFF800000' end='0xFF801000' /><slave name='hps_0_nand0.axi_slave0' start='0xFF900000' end='0xFF910000' /><slave name='hps_0_qspi.axi_slave1' start='0xFFA00000' end='0xFFA00100' /><slave name='hps_0_usb0.axi_slave0' start='0xFFB00000' end='0xFFB40000' /><slave name='hps_0_usb1.axi_slave0' start='0xFFB40000' end='0xFFB80000' /><slave name='hps_0_nand0.axi_slave1' start='0xFFB80000' end='0xFFB90000' /><slave name='hps_0_fpgamgr.axi_slave1' start='0xFFB90000' end='0xFFB90100' /><slave name='hps_0_dcan0.axi_slave0' start='0xFFC00000' end='0xFFC01000' /><slave name='hps_0_dcan1.axi_slave0' start='0xFFC01000' end='0xFFC02000' /><slave name='hps_0_uart0.axi_slave0' start='0xFFC02000' end='0xFFC02100' /><slave name='hps_0_uart1.axi_slave0' start='0xFFC03000' end='0xFFC03100' /><slave name='hps_0_i2c0.axi_slave0' start='0xFFC04000' end='0xFFC04100' /><slave name='hps_0_i2c1.axi_slave0' start='0xFFC05000' end='0xFFC05100' /><slave name='hps_0_i2c2.axi_slave0' start='0xFFC06000' end='0xFFC06100' /><slave name='hps_0_i2c3.axi_slave0' start='0xFFC07000' end='0xFFC07100' /><slave name='hps_0_timer0.axi_slave0' start='0xFFC08000' end='0xFFC08100' /><slave name='hps_0_timer1.axi_slave0' start='0xFFC09000' end='0xFFC09100' /><slave name='hps_0_sdrctl.axi_slave0' start='0xFFC25000' end='0xFFC26000' /><slave name='hps_0_timer2.axi_slave0' start='0xFFD00000' end='0xFFD00100' /><slave name='hps_0_timer3.axi_slave0' start='0xFFD01000' end='0xFFD01100' /><slave name='hps_0_clkmgr.axi_slave0' start='0xFFD04000' end='0xFFD05000' /><slave name='hps_0_rstmgr.axi_slave0' start='0xFFD05000' end='0xFFD05100' /><slave name='hps_0_sysmgr.axi_slave0' start='0xFFD08000' end='0xFFD08400' /><slave name='hps_0_dma.axi_slave0' start='0xFFE01000' end='0xFFE02000' /><slave name='hps_0_spim0.axi_slave0' start='0xFFF00000' end='0xFFF00100' /><slave name='hps_0_spim1.axi_slave0' start='0xFFF01000' end='0xFFF01100' /><slave name='hps_0_arm_gic_0.axi_slave1' start='0xFFFEC100' end='0xFFFEC200' /><slave name='hps_0_timer.axi_slave0' start='0xFFFEC600' end='0xFFFEC700' /><slave name='hps_0_arm_gic_0.axi_slave0' start='0xFFFED000' end='0xFFFEE000' /><slave name='hps_0_L2.axi_slave0' start='0xFFFEF000' end='0xFFFF0000' /><slave name='hps_0_axi_ocram.axi_slave0' start='0xFFFF0000' end='0x100000000' /></address-map>]]></parameter>
+  <parameter name="AUTO_MM_READ_ADDRESS_WIDTH" value="AddressWidth = 32" />
+  <parameter name="AUTO_MM_WRITE_ADDRESS_MAP" value="" />
+  <parameter name="AUTO_MM_WRITE_ADDRESS_WIDTH" value="AddressWidth = -1" />
+  <parameter name="BURST_ENABLE" value="0" />
+  <parameter name="BURST_WRAPPING_SUPPORT" value="0" />
+  <parameter name="CHANNEL_ENABLE" value="0" />
+  <parameter name="CHANNEL_WIDTH" value="8" />
+  <parameter name="DATA_FIFO_DEPTH" value="32" />
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="DESCRIPTOR_FIFO_DEPTH" value="128" />
+  <parameter name="ENHANCED_FEATURES" value="0" />
+  <parameter name="ERROR_ENABLE" value="0" />
+  <parameter name="ERROR_WIDTH" value="8" />
+  <parameter name="EXPOSE_ST_PORT" value="0" />
+  <parameter name="FIX_ADDRESS_WIDTH" value="32" />
+  <parameter name="MAX_BURST_COUNT" value="2" />
+  <parameter name="MAX_BYTE" value="1024" />
+  <parameter name="MAX_STRIDE" value="1" />
+  <parameter name="MODE" value="1" />
+  <parameter name="PACKET_ENABLE" value="0" />
+  <parameter name="PREFETCHER_DATA_WIDTH" value="32" />
+  <parameter name="PREFETCHER_ENABLE" value="0" />
+  <parameter name="PREFETCHER_MAX_READ_BURST_COUNT" value="2" />
+  <parameter name="PREFETCHER_READ_BURST_ENABLE" value="0" />
+  <parameter name="PROGRAMMABLE_BURST_ENABLE" value="0" />
+  <parameter name="RESPONSE_PORT" value="2" />
+  <parameter name="STRIDE_ENABLE" value="0" />
+  <parameter name="TRANSFER_TYPE" value="Aligned Accesses" />
+  <parameter name="USE_FIX_ADDRESS_WIDTH" value="0" />
+ </module>
+ <module name="msgdma_1" kind="altera_msgdma" version="21.1" enabled="1">
+  <parameter name="AUTO_DESCRIPTOR_READ_MASTER_ADDRESS_MAP" value="" />
+  <parameter
+     name="AUTO_DESCRIPTOR_READ_MASTER_ADDRESS_WIDTH"
+     value="AddressWidth = -1" />
+  <parameter name="AUTO_DESCRIPTOR_WRITE_MASTER_ADDRESS_MAP" value="" />
+  <parameter
+     name="AUTO_DESCRIPTOR_WRITE_MASTER_ADDRESS_WIDTH"
+     value="AddressWidth = -1" />
+  <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_MM_READ_ADDRESS_MAP" value="" />
+  <parameter name="AUTO_MM_READ_ADDRESS_WIDTH" value="AddressWidth = -1" />
+  <parameter name="AUTO_MM_WRITE_ADDRESS_MAP"><![CDATA[<address-map><slave name='hps_0_axi_sdram.axi_slave0' start='0x0' end='0x80000000' /><slave name='hps_0_gmac0.axi_slave0' start='0xFF700000' end='0xFF702000' /><slave name='hps_0_gmac1.axi_slave0' start='0xFF702000' end='0xFF704000' /><slave name='hps_0_sdmmc.axi_slave0' start='0xFF704000' end='0xFF705000' /><slave name='hps_0_qspi.axi_slave0' start='0xFF705000' end='0xFF705100' /><slave name='hps_0_fpgamgr.axi_slave0' start='0xFF706000' end='0xFF707000' /><slave name='hps_0_gpio0.axi_slave0' start='0xFF708000' end='0xFF708100' /><slave name='hps_0_gpio1.axi_slave0' start='0xFF709000' end='0xFF709100' /><slave name='hps_0_gpio2.axi_slave0' start='0xFF70A000' end='0xFF70A100' /><slave name='hps_0_l3regs.axi_slave0' start='0xFF800000' end='0xFF801000' /><slave name='hps_0_nand0.axi_slave0' start='0xFF900000' end='0xFF910000' /><slave name='hps_0_qspi.axi_slave1' start='0xFFA00000' end='0xFFA00100' /><slave name='hps_0_usb0.axi_slave0' start='0xFFB00000' end='0xFFB40000' /><slave name='hps_0_usb1.axi_slave0' start='0xFFB40000' end='0xFFB80000' /><slave name='hps_0_nand0.axi_slave1' start='0xFFB80000' end='0xFFB90000' /><slave name='hps_0_fpgamgr.axi_slave1' start='0xFFB90000' end='0xFFB90100' /><slave name='hps_0_dcan0.axi_slave0' start='0xFFC00000' end='0xFFC01000' /><slave name='hps_0_dcan1.axi_slave0' start='0xFFC01000' end='0xFFC02000' /><slave name='hps_0_uart0.axi_slave0' start='0xFFC02000' end='0xFFC02100' /><slave name='hps_0_uart1.axi_slave0' start='0xFFC03000' end='0xFFC03100' /><slave name='hps_0_i2c0.axi_slave0' start='0xFFC04000' end='0xFFC04100' /><slave name='hps_0_i2c1.axi_slave0' start='0xFFC05000' end='0xFFC05100' /><slave name='hps_0_i2c2.axi_slave0' start='0xFFC06000' end='0xFFC06100' /><slave name='hps_0_i2c3.axi_slave0' start='0xFFC07000' end='0xFFC07100' /><slave name='hps_0_timer0.axi_slave0' start='0xFFC08000' end='0xFFC08100' /><slave name='hps_0_timer1.axi_slave0' start='0xFFC09000' end='0xFFC09100' /><slave name='hps_0_sdrctl.axi_slave0' start='0xFFC25000' end='0xFFC26000' /><slave name='hps_0_timer2.axi_slave0' start='0xFFD00000' end='0xFFD00100' /><slave name='hps_0_timer3.axi_slave0' start='0xFFD01000' end='0xFFD01100' /><slave name='hps_0_clkmgr.axi_slave0' start='0xFFD04000' end='0xFFD05000' /><slave name='hps_0_rstmgr.axi_slave0' start='0xFFD05000' end='0xFFD05100' /><slave name='hps_0_sysmgr.axi_slave0' start='0xFFD08000' end='0xFFD08400' /><slave name='hps_0_dma.axi_slave0' start='0xFFE01000' end='0xFFE02000' /><slave name='hps_0_spim0.axi_slave0' start='0xFFF00000' end='0xFFF00100' /><slave name='hps_0_spim1.axi_slave0' start='0xFFF01000' end='0xFFF01100' /><slave name='hps_0_arm_gic_0.axi_slave1' start='0xFFFEC100' end='0xFFFEC200' /><slave name='hps_0_timer.axi_slave0' start='0xFFFEC600' end='0xFFFEC700' /><slave name='hps_0_arm_gic_0.axi_slave0' start='0xFFFED000' end='0xFFFEE000' /><slave name='hps_0_L2.axi_slave0' start='0xFFFEF000' end='0xFFFF0000' /><slave name='hps_0_axi_ocram.axi_slave0' start='0xFFFF0000' end='0x100000000' /></address-map>]]></parameter>
+  <parameter name="AUTO_MM_WRITE_ADDRESS_WIDTH" value="AddressWidth = 32" />
+  <parameter name="BURST_ENABLE" value="0" />
+  <parameter name="BURST_WRAPPING_SUPPORT" value="0" />
+  <parameter name="CHANNEL_ENABLE" value="0" />
+  <parameter name="CHANNEL_WIDTH" value="8" />
+  <parameter name="DATA_FIFO_DEPTH" value="32" />
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="DESCRIPTOR_FIFO_DEPTH" value="128" />
+  <parameter name="ENHANCED_FEATURES" value="0" />
+  <parameter name="ERROR_ENABLE" value="0" />
+  <parameter name="ERROR_WIDTH" value="8" />
+  <parameter name="EXPOSE_ST_PORT" value="0" />
+  <parameter name="FIX_ADDRESS_WIDTH" value="32" />
+  <parameter name="MAX_BURST_COUNT" value="2" />
+  <parameter name="MAX_BYTE" value="1024" />
+  <parameter name="MAX_STRIDE" value="1" />
+  <parameter name="MODE" value="2" />
+  <parameter name="PACKET_ENABLE" value="0" />
+  <parameter name="PREFETCHER_DATA_WIDTH" value="32" />
+  <parameter name="PREFETCHER_ENABLE" value="0" />
+  <parameter name="PREFETCHER_MAX_READ_BURST_COUNT" value="2" />
+  <parameter name="PREFETCHER_READ_BURST_ENABLE" value="0" />
+  <parameter name="PROGRAMMABLE_BURST_ENABLE" value="0" />
+  <parameter name="RESPONSE_PORT" value="2" />
+  <parameter name="STRIDE_ENABLE" value="0" />
+  <parameter name="TRANSFER_TYPE" value="Aligned Accesses" />
+  <parameter name="USE_FIX_ADDRESS_WIDTH" value="0" />
+ </module>
  <connection
    kind="avalon"
    version="21.1"
@@ -818,7 +916,73 @@
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="msgdma_0.csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="msgdma_1.csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="msgdma_0.descriptor_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0060" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="msgdma_1.descriptor_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="msgdma_0.mm_read"
+   end="hps_0.f2h_axi_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="msgdma_1.mm_write"
+   end="hps_0.f2h_axi_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon_streaming"
+   version="21.1"
+   start="TOP_0.b"
+   end="msgdma_1.st_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="21.1"
+   start="msgdma_0.st_source"
+   end="TOP_0.a" />
  <connection kind="clock" version="21.1" start="FPGA_CLK.clk" end="TOP_0.clock" />
+ <connection kind="clock" version="21.1" start="FPGA_CLK.clk" end="msgdma_0.clock" />
+ <connection kind="clock" version="21.1" start="FPGA_CLK.clk" end="msgdma_1.clock" />
  <connection
    kind="clock"
    version="21.1"
@@ -838,6 +1002,20 @@
    kind="interrupt"
    version="21.1"
    start="hps_0.f2h_irq0"
+   end="msgdma_0.csr_irq">
+  <parameter name="irqNumber" value="1" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="21.1"
+   start="hps_0.f2h_irq0"
+   end="msgdma_1.csr_irq">
+  <parameter name="irqNumber" value="2" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="21.1"
+   start="hps_0.f2h_irq0"
    end="TOP_0.irq">
   <parameter name="irqNumber" value="0" />
  </connection>
@@ -846,6 +1024,16 @@
    version="21.1"
    start="FPGA_CLK.clk_reset"
    end="TOP_0.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="FPGA_CLK.clk_reset"
+   end="msgdma_0.reset_n" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="FPGA_CLK.clk_reset"
+   end="msgdma_1.reset_n" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>

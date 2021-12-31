@@ -1,22 +1,28 @@
-#include "HLS/stdio.h"
+#include <iostream>
 #include "assert.h"
 #include "top.cpp"
 
+#define ELEMENTS 10
+
 int main() 
 {
-    int a[ELEMENTS], b[ELEMENTS], c[ELEMENTS];
-
+    int a[ELEMENTS];
+    ihc::stream_in<int, ihc::bitsPerSymbol<8>, ihc::firstSymbolInHighOrderBits<true>> as;
+    ihc::stream_out<int, ihc::bitsPerSymbol<8>, ihc::firstSymbolInHighOrderBits<true>> bs;
+    
     srand(0);
     for (int i=0; i<ELEMENTS; ++i) {
-        a[i]=rand() % 10;
-        b[i]=rand() % 10;
+        a[i]=rand() % 100 - 50;
+        as.write(a[i]);
     }
 
-    ACCL_TOP(a, b, c);
+    ACCL_TOP(as, bs, ELEMENTS);
 
-    for (int i=0; i<ELEMENTS; ++i) {
-        printf("%d + %d = %d\n", a[i], b[i], c[i]);
-        assert(c[i] == a[i] + b[i]);
+    for (int i=0; i<ELEMENTS; ++i) 
+    {
+        int b = bs.read();
+        std:: cout << a[i] << " * " << -1 << " = " << b << std::endl; 
+        assert(b == -1*a[i]);
     }
     return 0;
 }

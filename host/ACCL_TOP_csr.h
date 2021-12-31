@@ -31,6 +31,9 @@
             |         |               done[0:0], |       done is read-only and
             |         |   interrupt_status[0:0]} | interrupt_status is write 1
             |         |                          |                    to clear
+------------|---------|--------------------------|-----------------------------
+       0x20 |     R/W |         {reserved[31:0], |                  Argument N
+            |         |                 N[31:0]} |                            
 
 NOTE: Writes to reserved bits will be ignored and reads from reserved
       bits will return undefined values.
@@ -46,10 +49,13 @@ NOTE: Writes to reserved bits will be ignored and reads from reserved
 #define ACCL_TOP_CSR_START_REG (0x8)
 #define ACCL_TOP_CSR_INTERRUPT_ENABLE_REG (0x10)
 #define ACCL_TOP_CSR_INTERRUPT_STATUS_REG (0x18)
+#define ACCL_TOP_CSR_ARG_N_REG (0x20)
 
 /* Argument Sizes (bytes) */
+#define ACCL_TOP_CSR_ARG_N_SIZE (4)
 
 /* Argument Masks */
+#define ACCL_TOP_CSR_ARG_N_MASK (0xffffffff)
 
 /* Status/Control Masks */
 #define ACCL_TOP_CSR_BUSY_MASK   (1<<0)

@@ -128,13 +128,13 @@ class DevMem:
         # Make reading easier (and faster... won't resolve dot in loops)
         mem = self.mem
 
-        self.debug('reading {0} bytes from offset {1}'.
-                   format(length * self.word, hex(offset)))
 
         # Compensate for the base_address not being what the user requested
         # and then seek to the aligned offset.
         virt_base_addr = self.base_addr_offset & self.mask
         mem.seek(virt_base_addr + offset)
+        self.debug('reading {0} bytes from offset {1}'.
+                   format(length * self.word, hex(virt_base_addr + offset)))
 
         # Read length words of size self.word and return it
         data = []
@@ -150,8 +150,6 @@ class DevMem:
 
         if offset < 0 or len(din) <= 0: raise AssertionError
 
-        self.debug('writing {0} bytes to offset {1}'.
-                format(len(din) * self.word, hex(offset)))
 
         # Make reading easier (and faster... won't resolve dot in loops)
         mem = self.mem
@@ -166,6 +164,8 @@ class DevMem:
         # Seek to the aligned offset
         virt_base_addr = self.base_addr_offset & self.mask
         mem.seek(virt_base_addr + offset)
+        self.debug('writing {0} bytes to offset {1}'.
+                format(len(din) * self.word, hex(virt_base_addr + offset)))
 
         # Read until the end of our aligned address
         for i in range(len(din)):
