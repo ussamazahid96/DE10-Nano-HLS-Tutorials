@@ -139,7 +139,7 @@ class DevMem:
         # Read length words of size self.word and return it
         data = []
         for i in range(length):
-            data.append(struct.unpack('I', mem.read(self.word))[0])
+            data.append(struct.unpack('i', mem.read(self.word))[0])
 
         abs_addr = self.base_addr + virt_base_addr
         return DevMemBuffer(abs_addr + offset, data)
@@ -172,7 +172,7 @@ class DevMem:
             self.debug('writing at position = {0}: 0x{1:x}'.
                         format(self.mem.tell(), din[i]))
             # Write one word at a time
-            mem.write(struct.pack('I', din[i]))
+            mem.write(struct.pack('i', din[i]))
 
     def debug_set(self, value):
         self._debug = value

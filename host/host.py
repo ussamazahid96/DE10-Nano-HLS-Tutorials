@@ -14,8 +14,8 @@ ACC_TOP_C = DevMem(0xff200600, 256)
 ARG_A = []
 ARG_B = []
 for i in range(ELEMENTS):
-    ARG_A.append(random.randint(0,ELEMENTS))
-    ARG_B.append(random.randint(0,ELEMENTS))
+    ARG_A.append(random.randint(-ELEMENTS,ELEMENTS))
+    ARG_B.append(random.randint(-ELEMENTS,ELEMENTS))
 
 ACC_TOP_A.write(0, ARG_A)
 ACC_TOP_B.write(0, ARG_B)
@@ -34,4 +34,6 @@ print(res)
 for i in range(ELEMENTS):
     if res[i] != ARG_A[i] + ARG_B[i]:
         raise Exception("test failed")
+        exit(-1)
+print("Test Passed")
 
